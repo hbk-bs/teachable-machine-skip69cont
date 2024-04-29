@@ -1,0 +1,97 @@
+body {
+    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #b6cdee;
+}
+
+.center-wrapper {
+    width: 80%;
+    margin: 50px auto;
+    max-width: 1000px; /* Maximal zulässige Breite des Inhalts */
+    padding: 0 20px; /* Außenabstand hinzufügen */
+}
+
+header {
+    background-color: #dce7f8;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #bde9f3;
+    border-radius: 10px;
+    background-color: #bde9f3;
+    transition: box-shadow 0.3s ease;
+}
+
+h1, h2 {
+    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;}
+
+h1 {
+    color: #558bd9;
+}
+
+h2 {
+    color: #000000;
+}
+
+button {
+    display: block;
+    width: 100%;
+    max-width: 300px; /* Maximal zulässige Breite des Buttons */
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.5em; /* Relative Schriftgröße */
+    background-color: #dce7f8;
+    color: #558bd9;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 80%; /* Maximal zulässige Breite der Tabelle */
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #b6cdee;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #bce7f8;
+}
+h3 {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.5em;
+    background-color: #dce7f8;
+    color: #558bd9;
+    border: 1px solid #558bd9;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <table border=1>
+    <tr>
+        <th colspan=" 2" >
+        <header>
+          <h1>Drinkalot.Ai</h1>
+    </header>
+</th>
+</tr>
+<tr>
+<td class="inhalt"><section>
+    <h2>
+      Here u can see how many percent of water is left in ur bottle.
+    </h2>
+    
+   
+</section>
+</td>
+  <td class="live"> 
+     <section>
+        <h3>
+                  
+          <div id="label"></div>    
+               
+          </h3>
+      </section>
+  </td>
+
+<td class="man"> <section>
+    <h2>
+       <img src="mascot.png" alt="mascot">
+    </h2>
+   
+</section>
+</td>
+
+</tr>
+<tr>
+<td class="button"> <section>
+
+    <h2>
+   
+<button onclick="goTopage3()">END</button>
+
+<script>
+    function goTopage3() {
+        window.location.href = "page3.html";
+    }
+    </script>
+    </h2>
+</section>
+
+</td>
+</tr>
+
+  </table>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+<script type="text/javascript">
+  // Classifier Variable
+  let classifier;
+  let labelElement;
+  // Model URL
+  let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bjFyoWTHn/';
+  
+  // Video
+  let video;
+  let flippedVideo;
+  // To store the classification
+  let label = "";
+
+  // Load the model first
+  function preload() {
+    classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+  }
+
+  function setup() {
+    createCanvas(windowWidth ,  windowHeight/2);
+    // Create the video
+    video = createCapture(VIDEO);
+    video.size(windowWidth/2, windowHeight/2);
+
+    video.hide();
+    flippedVideo = ml5.flipImage(video);
+    labelElement = document.querySelector("#label");
+    if(!labelElement){
+      throw new Error("Label dom element #label is missing")
+    }
+    // Start classifying
+    classifyVideo();
+    noCanvas();
+  }
+
+  function draw() {
+    // background(0);
+    // // Draw the video
+    // image(flippedVideo, 0, 0);
+
+    // // Draw the label
+    // fill("#558bd9");
+    // textSize(100)
+    // textAlign(CENTER);
+    // text(label, width / 2, height - 4);
+  }
+
+  // Get a prediction for the current video frame
+  function classifyVideo() {
+    flippedVideo = ml5.flipImage(video)
+    classifier.classify(flippedVideo, gotResult);
+    flippedVideo.remove();
+
+  }
+
+  // When we get a result
+  function gotResult(error, results) {
+    // If there is an error
+    if (error) {
+      console.error(error);
+      return;
+    }
+    // The results are in an array ordered by confidence.
+    // console.log(results[0].label);
+    if(label !== results[0].label){
+      console.log(results[0].label)
+      label = results[0].label;
+      labelElement.innerText = label;
+    }
+
+    // Classifiy again!
+    classifyVideo();
+  }
+</script>
+</body>
+</html>
+
